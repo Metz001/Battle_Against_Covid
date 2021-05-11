@@ -6,21 +6,24 @@ public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] powerups;
     [SerializeField] private GameObject enemyPrefab;
-    [SerializeField] private Player player;
+    [SerializeField] private GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Player").GetComponent<Player>();
+       // gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         StartCoroutine(SpawnEnemy());
         StartCoroutine(SpawnPowerUp());
+        if (gameManager != null)
+            Debug.Log("objeto encontrado");
     }
+    
 
 
     //corrutina spawn enemigos cada x tiempo, 5seg
     IEnumerator SpawnEnemy()
     {
-        while (player.vidas >= 0) 
+        while (gameManager.gameOver == false) 
         {
             yield return new WaitForSeconds(2);
             Instantiate(enemyPrefab, new Vector3(Random.Range(-8f, 8f), 6f, 0), Quaternion.identity);
@@ -31,7 +34,7 @@ public class SpawnManager : MonoBehaviour
     //corrutina de spawn de power ups
     IEnumerator SpawnPowerUp()
     {
-        while (player.vidas >= 0)
+        while (gameManager.gameOver == false)
         {
             int r = Random.Range(0,powerups.Length);
             yield return new WaitForSeconds(5f);

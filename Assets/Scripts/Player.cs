@@ -27,7 +27,9 @@ public class Player : MonoBehaviour
     public int shield; //resistencai escudo
     [SerializeField]
    public GameObject shieldGameObject;
+
     private UI_Manager uiManager;
+    private GameManager gameManager;
 
     void Start()
     {
@@ -45,6 +47,7 @@ public class Player : MonoBehaviour
             uiManager.UpdateLives(vidas);
         }
 
+        gameManager = GameObject.Find("Canvas").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -99,7 +102,8 @@ public class Player : MonoBehaviour
             if(vidas <= 0)
             {
                 Instantiate(explosion, transform.position, Quaternion.identity);
-                Destroy(gameObject);
+                gameManager.gameOver = true;
+                Destroy(gameObject);               
             }
         }
 

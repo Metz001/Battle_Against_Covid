@@ -7,7 +7,7 @@ public class UI_Manager : MonoBehaviour
 {
     [SerializeField]
     Sprite[] spriteLives;
-    public Image livesImage;
+    public Image livesImage, titleScreen;
     public Text scoreText;
     public int _score;
 
@@ -20,5 +20,13 @@ public class UI_Manager : MonoBehaviour
         _score += score;
 
         scoreText.text = "Score: " + _score;
+    }
+    public void ShowTitleScreen()
+    {
+        titleScreen.gameObject.SetActive(true);
+    }
+    public void HideTitleScreen()
+    {
+        titleScreen.gameObject.SetActive(false);
     }
 }
