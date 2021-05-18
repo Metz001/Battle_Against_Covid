@@ -11,8 +11,12 @@ public class GameManager : MonoBehaviour
 
     private UI_Manager _UiManager;
 
+    SpawnManager _SpawnManager;
+
     private void Start()
     {
+        gameOver = true;
+        _SpawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
         _UiManager = GameObject.Find("Canvas").GetComponent<UI_Manager>();
     }
 
@@ -24,6 +28,8 @@ public class GameManager : MonoBehaviour
             {
                 Instantiate(player, Vector3.zero,Quaternion.identity);
                 gameOver = false;
+                _SpawnManager.StartCoroutine(_SpawnManager.SpawnEnemy());
+                _SpawnManager.StartCoroutine(_SpawnManager.SpawnPowerUp());
                 _UiManager.HideTitleScreen();
             }
         }

@@ -12,16 +12,15 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
        // gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        StartCoroutine(SpawnEnemy());
-        StartCoroutine(SpawnPowerUp());
-        if (gameManager != null)
-            Debug.Log("objeto encontrado");
+        //StartCoroutine(SpawnEnemy());
+        //StartCoroutine(SpawnPowerUp());
+       
     }
     
 
 
     //corrutina spawn enemigos cada x tiempo, 5seg
-    IEnumerator SpawnEnemy()
+    public IEnumerator SpawnEnemy()
     {
         while (gameManager.gameOver == false) 
         {
@@ -32,7 +31,7 @@ public class SpawnManager : MonoBehaviour
     }
 
     //corrutina de spawn de power ups
-    IEnumerator SpawnPowerUp()
+    public IEnumerator SpawnPowerUp()
     {
         while (gameManager.gameOver == false)
         {

@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedFall: 3
   powerUpId: 0
-  powerDownTime: 2
+  powerDownTime: 8
   speedPlus: 0
 --- !u!212 &38654883858276333
 SpriteRenderer:

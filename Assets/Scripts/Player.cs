@@ -47,7 +47,8 @@ public class Player : MonoBehaviour
             uiManager.UpdateLives(vidas);
         }
 
-        gameManager = GameObject.Find("Canvas").GetComponent<GameManager>();
+        gameManager = GameObject.FindObjectOfType<GameManager>();
+        //gameManager = GameObject.Find("Canvas").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
