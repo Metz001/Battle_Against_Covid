@@ -9,10 +9,12 @@ public class GameManager : MonoBehaviour
     public bool gameOver = true;
     public GameObject player;
 
-    private UI_Manager _UiManager;
+    [HideInInspector]
+    public UI_Manager _UiManager;
 
     SpawnManager _SpawnManager;
 
+    int _score;
     private void Start()
     {
         gameOver = true;
@@ -24,14 +26,23 @@ public class GameManager : MonoBehaviour
     {
         if (gameOver == true)
         {
+            _UiManager.ShowTitleScreen();
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 Instantiate(player, Vector3.zero,Quaternion.identity);
                 gameOver = false;
                 _SpawnManager.StartCoroutine(_SpawnManager.SpawnEnemy());
                 _SpawnManager.StartCoroutine(_SpawnManager.SpawnPowerUp());
-                _UiManager.HideTitleScreen();
+                _UiManager.HideTitleScreen();             
+                _UiManager._score = 0;
+                _UiManager.scoreText.text = "Score: " + _UiManager._score;
             }
         }
+      
     }
+
+    //método de muerte
+        //mostrar el título de inicio
+        //guardar puntaje
+        //poner punateje en un UI
 }

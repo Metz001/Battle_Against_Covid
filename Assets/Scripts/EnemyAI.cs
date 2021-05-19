@@ -10,7 +10,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     private float speed;
 
-    private UI_Manager uiManager;
+    //private UI_Manager uiManager;
+    private GameManager gameManager;
 
     [SerializeField]
     int scoreReward;
@@ -18,7 +19,8 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
-        uiManager = GameObject.Find("Canvas").GetComponent<UI_Manager>(); 
+        //uiManager = GameObject.Find("Canvas").GetComponent<UI_Manager>(); 
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
     void Update()
     {
@@ -27,6 +29,11 @@ public class EnemyAI : MonoBehaviour
       if (transform.position.y <= -6.2f)
         {
             transform.position = new Vector3(Random.Range(-6.7f, 7.7f), 6.2f, 0f); 
+        }
+
+        if (gameManager.gameOver == true)
+        {
+            enemyDeath();
         }
     }
  
@@ -38,7 +45,8 @@ public class EnemyAI : MonoBehaviour
         if(other.tag == "Laser")
         {
             Destroy(other.gameObject);
-            uiManager.UpdateScore(scoreReward);
+            //uiManager.UpdateScore(scoreReward);
+            gameManager._UiManager.UpdateScore(scoreReward);
             enemyDeath();
         }
         if (other.tag == "Player")
@@ -48,13 +56,15 @@ public class EnemyAI : MonoBehaviour
             {
                 player.Damage();            //player recibe daño
             }
-            uiManager.UpdateScore(scoreReward/2);
+            //uiManager.UpdateScore(scoreReward/2);
+            gameManager._UiManager.UpdateScore(scoreReward/2);
             enemyDeath();
         }
     }
 
     void enemyDeath()
     {
+
         Instantiate(enemyExplosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

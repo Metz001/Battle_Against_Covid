@@ -44,7 +44,7 @@ public class PowerUp : MonoBehaviour
                 }
                 else if(powerUpId == 2)
                 {
-                    player.shield = 3;
+                    player.shield = 1;
                     player.shieldGameObject.SetActive(true);
                     Destroy(gameObject);
                 }

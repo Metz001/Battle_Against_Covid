@@ -18,15 +18,18 @@ public class UI_Manager : MonoBehaviour
     public void UpdateScore(int score)
     {
         _score += score;
-
         scoreText.text = "Score: " + _score;
     }
     public void ShowTitleScreen()
     {
+        scoreText.gameObject.SetActive(false);
+        livesImage.gameObject.SetActive(false);
         titleScreen.gameObject.SetActive(true);
     }
     public void HideTitleScreen()
     {
         titleScreen.gameObject.SetActive(false);
+        scoreText.gameObject.SetActive(true);
+        livesImage.gameObject.SetActive(true);
     }
 }
