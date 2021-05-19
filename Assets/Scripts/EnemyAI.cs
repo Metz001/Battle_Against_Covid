@@ -10,6 +10,9 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     private float speed;
 
+    [SerializeField]
+    private AudioClip _clip;
+
     //private UI_Manager uiManager;
     private GameManager gameManager;
 
@@ -47,6 +50,7 @@ public class EnemyAI : MonoBehaviour
             Destroy(other.gameObject);
             //uiManager.UpdateScore(scoreReward);
             gameManager._UiManager.UpdateScore(scoreReward);
+            AudioSource.PlayClipAtPoint(_clip, Camera.main.transform.position, 0.5f);
             enemyDeath();
         }
         if (other.tag == "Player")
@@ -58,6 +62,7 @@ public class EnemyAI : MonoBehaviour
             }
             //uiManager.UpdateScore(scoreReward/2);
             gameManager._UiManager.UpdateScore(scoreReward/2);
+            AudioSource.PlayClipAtPoint(_clip, Camera.main.transform.position, 0.5f);
             enemyDeath();
         }
     }

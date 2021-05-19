@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4045039645323570498}
   - component: {fileID: 4045039645323570511}
   - component: {fileID: 4045039645323570508}
+  - component: {fileID: 9143804387221381240}
   m_Layer: 0
   m_Name: Shield_PowerUp
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4045039645323570499}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8653407, y: 3.2804885, z: 0}
+  m_LocalPosition: {x: -0.02, y: -0.28, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -99,6 +100,7 @@ MonoBehaviour:
   powerUpId: 2
   powerDownTime: 0
   speedPlus: 0
+  _clip: {fileID: 8300000, guid: 5ee343246919d2b4bba63ae629e95494, type: 3}
 --- !u!61 &4045039645323570508
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -125,3 +127,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.2, y: 3}
   m_EdgeRadius: 0
+--- !u!95 &9143804387221381240
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4045039645323570499}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 64113f6c826614d47a05276dcc765edb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

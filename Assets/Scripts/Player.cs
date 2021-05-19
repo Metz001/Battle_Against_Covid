@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Canon canon;//Poder de disparo de cañon triple
     [SerializeField]
+    private GameObject[] engines;
+    [SerializeField]
     GameObject explosion;
 
     [HideInInspector]
@@ -39,6 +41,8 @@ public class Player : MonoBehaviour
         transform.position = Vector3.zero; //esto hace que su posición inicil sea simepre cero
 
         vidas = 3; //asignación de numeros de vida
+        engines[0].SetActive(false);
+        engines[1].SetActive(false);
         shieldGameObject = transform.Find("Shields").gameObject;
         shieldGameObject.SetActive(false);
         uiManager = GameObject.Find("Canvas").GetComponent<UI_Manager>();
@@ -88,7 +92,9 @@ public class Player : MonoBehaviour
     }
 
     public void Damage()
-    {          
+    {
+
+       
         if(vidas>0 && shield > 0)
         {
             shield--;
@@ -107,6 +113,10 @@ public class Player : MonoBehaviour
                 Destroy(gameObject);               
             }
         }
+        if (vidas == 2)
+            engines[0].SetActive(true);
+        else if (vidas == 1)
+            engines[1].SetActive(true);
 
         Debug.Log("quedan " + vidas + " vidas");
     }

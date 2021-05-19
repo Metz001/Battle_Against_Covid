@@ -13,6 +13,8 @@ public class PowerUp : MonoBehaviour
     private float powerDownTime; //Timepo que dura el poder
     [SerializeField]
     private float speedPlus; //aumento de velocidad
+    [SerializeField]
+    private AudioClip _clip;
 
 
 
@@ -26,6 +28,8 @@ public class PowerUp : MonoBehaviour
         {
             Player player = other.GetComponent<Player>();
             Canon canonPlayer = player.GetComponent<Canon>();
+
+            AudioSource.PlayClipAtPoint(_clip, Camera.main.transform.position, 0.7f);
             if (canonPlayer != null)
             {
                 if(powerUpId == 0)

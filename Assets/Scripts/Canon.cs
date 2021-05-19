@@ -12,11 +12,17 @@ public class Canon : MonoBehaviour
     [HideInInspector]
     public float timePower;
 
-        
+    private AudioSource audioSource;
+    private void Start()
+    {
+        audioSource = gameObject.GetComponent<AudioSource>();
+    }
     public void Shoot()
     {
+    
         if (Time.time > nextFire)
         {
+            audioSource.Play();
             if (tripleShot == true)
             {
 
