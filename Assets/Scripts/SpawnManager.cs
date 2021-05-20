@@ -7,6 +7,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject[] powerups;
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameManager gameManager;
+    public float spawnTime_PowerUp, spawnTime_Enemy;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +25,7 @@ public class SpawnManager : MonoBehaviour
     {
         while (gameManager.gameOver == false) 
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(spawnTime_Enemy);
             Instantiate(enemyPrefab, new Vector3(Random.Range(-8f, 8f), 6f, 0), Quaternion.identity);
         }
        
@@ -36,7 +37,7 @@ public class SpawnManager : MonoBehaviour
         while (gameManager.gameOver == false)
         {
             int r = Random.Range(0,powerups.Length);
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(spawnTime_PowerUp);
             Instantiate(powerups[r], new Vector3(Random.Range(-8f, 8f), 6f, 0), Quaternion.identity);
         }
 
