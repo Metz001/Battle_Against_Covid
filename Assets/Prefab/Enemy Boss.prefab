@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 620877690873263021}
   - component: {fileID: 1975725890}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy Boss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3986790165716302148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.06, y: 3.76, z: 0}
-  m_LocalScale: {x: 0.9, y: 0.9, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 3154912113cbb4a498df6f571c74e18c, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6698113, g: 0.6487053, b: 0.28119436, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -124,10 +124,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyExplosion: {fileID: 1390317140355428458, guid: 21f98105698424d468d1f56d960197ed,
     type: 3}
-  speed: 2
+  speed: 0.5
   _clip: {fileID: 8300000, guid: a885c043fab7e46438bba03ba9dab6bc, type: 3}
-  scoreReward: 20
-  vidas: 1
+  scoreReward: 100
+  vidas: 50
 --- !u!50 &1975725890
 Rigidbody2D:
   serializedVersion: 4

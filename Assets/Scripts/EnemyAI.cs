@@ -18,12 +18,16 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField]
     int scoreReward;
+
+    [SerializeField]
+    int vidas;
     // Update is called once per frame
 
     private void Start()
     {
         //uiManager = GameObject.Find("Canvas").GetComponent<UI_Manager>(); 
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+       
     }
     void Update()
     {
@@ -34,7 +38,7 @@ public class EnemyAI : MonoBehaviour
             transform.position = new Vector3(Random.Range(-6.7f, 7.7f), 6.2f, 0f); 
         }
 
-        if (gameManager.gameOver == true)
+        if (gameManager.gameOver == true || vidas <= 0)
         {
             enemyDeath();
         }
@@ -51,7 +55,8 @@ public class EnemyAI : MonoBehaviour
             //uiManager.UpdateScore(scoreReward);
             gameManager._UiManager.UpdateScore(scoreReward);
             AudioSource.PlayClipAtPoint(_clip, Camera.main.transform.position, 0.5f);
-            enemyDeath();
+            vidas--;
+            //enemyDeath();
         }
         if (other.tag == "Player")
         {
@@ -63,7 +68,8 @@ public class EnemyAI : MonoBehaviour
             //uiManager.UpdateScore(scoreReward/2);
             gameManager._UiManager.UpdateScore(scoreReward/2);
             AudioSource.PlayClipAtPoint(_clip, Camera.main.transform.position, 0.5f);
-            enemyDeath();
+            vidas--;
+            //enemyDeath();
         }
     }
 

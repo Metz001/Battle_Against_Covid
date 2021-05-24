@@ -6,17 +6,21 @@ public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] powerups;
     [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject bossPrefab;
     [SerializeField] private GameManager gameManager;
     public float spawnTime_PowerUp, spawnTime_Enemy;
+    [HideInInspector]
+   public bool boss;
 
     // Start is called before the first frame update
+    /*
     void Start()
     {
        // gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         //StartCoroutine(SpawnEnemy());
         //StartCoroutine(SpawnPowerUp());
        
-    }
+    }*/
     
 
 
@@ -27,6 +31,12 @@ public class SpawnManager : MonoBehaviour
         {
             yield return new WaitForSeconds(spawnTime_Enemy);
             Instantiate(enemyPrefab, new Vector3(Random.Range(-8f, 8f), 6f, 0), Quaternion.identity);
+            if (gameManager._UiManager.actualScore > 300 && boss == false)
+            {
+                Instantiate(bossPrefab, new Vector3(0, 6f, 0), Quaternion.identity);
+                boss = true;
+            }
+
         }
        
     }
@@ -42,4 +52,6 @@ public class SpawnManager : MonoBehaviour
         }
 
     }
+
+   
 }
