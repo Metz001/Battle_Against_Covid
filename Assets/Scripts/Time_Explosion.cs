@@ -7,7 +7,7 @@ public class Time_Explosion : MonoBehaviour
    
     void Start()
     {
-        Destroy(gameObject, 2.3f);
+        Destroy(gameObject, 1.6f);
     }
 
    

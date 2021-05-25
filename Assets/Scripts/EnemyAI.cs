@@ -74,6 +74,7 @@ public class EnemyAI : MonoBehaviour
                 if (id == 1)
                 {
                     gameManager.destroyBoos = true;
+                    gameManager.gameOver = true;
                     gameManager._UiManager.GameOver(true);
                 }
                 
