@@ -8,6 +8,11 @@ public class EnemyAI : MonoBehaviour
     private GameObject enemyExplosion;
 
     [SerializeField]
+    private GameObject laser2;
+    
+
+
+    [SerializeField]
     private float speed;
 
     [SerializeField]
@@ -21,13 +26,20 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField]
     int vidas;
+
+
+    [SerializeField]
+    int id;
+
+
+
     // Update is called once per frame
 
     private void Start()
     {
         //uiManager = GameObject.Find("Canvas").GetComponent<UI_Manager>(); 
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-       
+        StartCoroutine(Shoot());
     }
     void Update()
     {
@@ -72,7 +84,19 @@ public class EnemyAI : MonoBehaviour
             //enemyDeath();
         }
     }
+    public IEnumerator Shoot()
+    {
+           yield return new WaitForSeconds(Random.Range(1f,3f));
+        if(id == 1)
+        {
+            Instantiate(laser2, transform.position + new Vector3(0.95f, -1.6f, 0f), Quaternion.identity);
+            Instantiate(laser2, transform.position + new Vector3(-0.95f, -1.6f, 0f), Quaternion.identity);
+        }
 
+        Instantiate(laser2, transform.position + new Vector3(0f, -1.6f, 0f), Quaternion.identity);
+        
+
+    }
     void enemyDeath()
     {
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
+//using System;
 
 public class UI_Manager : MonoBehaviour
 {
@@ -13,9 +13,10 @@ public class UI_Manager : MonoBehaviour
     public int actualScore;
 
     //lead borad
-    private int[] leadScores = new int[5];
-    public Text[] textScores = new Text[5];
+    private int leadScores;
+    public Text textScores;
 
+ 
     public void UpdateLives(int curretnLives)
     {
         livesImage.sprite = spriteLives[curretnLives];
@@ -27,17 +28,19 @@ public class UI_Manager : MonoBehaviour
     }
     public void ShowTitleScreen()
     {
-        BoardOrder(leadScores);
-        for (int i = 0; i < leadScores.Length; i++)
-            textScores[i].gameObject.SetActive(true);
+        BoardOrder();
+        /* for (int i = 0; i < leadScores.Length; i++)
+             textScores[i].gameObject.SetActive(true);*/
+        textScores.gameObject.SetActive(true);
         scoreText.gameObject.SetActive(false);
         livesImage.gameObject.SetActive(false);
         titleScreen.gameObject.SetActive(true);
     }
     public void HideTitleScreen()
     {
-        for (int i = 0; i < leadScores.Length; i++)        
-            textScores[i].gameObject.SetActive(false);      
+        /*for (int i = 0; i < leadScores.Length; i++)        
+            textScores[i].gameObject.SetActive(false);   */
+        textScores.gameObject.SetActive(false);
         titleScreen.gameObject.SetActive(false);
         scoreText.gameObject.SetActive(true);
         livesImage.gameObject.SetActive(true);
@@ -45,20 +48,38 @@ public class UI_Manager : MonoBehaviour
 
     //método para guardar y reordenar la tabla de posiciones
 
-    private void LeadBoardIn() //
+    
+    private void BoardOrder()
     {
-        if (leadScores[4] < actualScore)
-            leadScores[4] = actualScore;
-    }
-    private void BoardOrder(int[] leadScores)
-    {
-        LeadBoardIn();
-        Array.Sort(leadScores);
-        Array.Reverse(leadScores);
+        /*  if (actualScore > leadScores[0])
+               leadScores[0] = actualScore;*/
+        if (leadScores < actualScore)
+            leadScores = actualScore;
+        //Array.Sort(leadScores);
+
+        //Array.Reverse(leadScores);
+        /*
+        //ordena el arreglo
+       
+        //invertir arreglo
+        leadScores[0] = leadScores[4];
+        leadScores[1] = leadScores[3];
+        leadScores[2] = leadScores[2];
+        leadScores[3] = leadScores[1];
+        leadScores[4] = leadScores[0];
+        */
+
         //imprimir la tabal de posiciones 
+        textScores.text = "Best Score...." + leadScores;
+        /*
+         textScores[1].text = "2...." + leadScores[3];
+         textScores[2].text = "3...." + leadScores[2];
+         textScores[3].text = "4...." + leadScores[1];
+         textScores[4].text = "5...." + leadScores[0];*/
+        /*
         for (int i = 0; i < leadScores.Length; i++)
         {
             textScores[i].text = (i+1) + "...."+ leadScores[i];
-        }
+        }*/
     }
 }

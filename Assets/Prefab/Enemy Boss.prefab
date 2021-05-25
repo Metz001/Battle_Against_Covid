@@ -124,10 +124,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyExplosion: {fileID: 1390317140355428458, guid: 21f98105698424d468d1f56d960197ed,
     type: 3}
-  speed: 0.5
+  laser2: {fileID: 5524664688909948709, guid: d3ca370efd907fa4fb55f358e093a9a7, type: 3}
+  speed: 0.05
   _clip: {fileID: 8300000, guid: a885c043fab7e46438bba03ba9dab6bc, type: 3}
-  scoreReward: 100
-  vidas: 50
+  scoreReward: 500
+  vidas: 150
+  id: 1
 --- !u!50 &1975725890
 Rigidbody2D:
   serializedVersion: 4

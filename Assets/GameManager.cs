@@ -28,11 +28,13 @@ public class GameManager : MonoBehaviour
     {
         if (gameOver == true)
         {
+
             _UiManager.ShowTitleScreen();
             if (Input.GetKeyDown(KeyCode.Space)) //Game start
             {
                 Instantiate(player, Vector3.zero,Quaternion.identity);
                 gameOver = false;
+                _SpawnManager.boss = false;
                 _SpawnManager.StartCoroutine(_SpawnManager.SpawnEnemy());
                 _SpawnManager.StartCoroutine(_SpawnManager.SpawnPowerUp());
                 _UiManager.HideTitleScreen();             
