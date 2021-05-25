@@ -9,7 +9,11 @@ public class Laser : MonoBehaviour
 
     [SerializeField]
     private int dir = 1;
- 
+
+    [SerializeField]
+    private AudioClip _clip;
+
+
     // Update is called once per frame
     void Update()
     {    
@@ -26,7 +30,8 @@ public class Laser : MonoBehaviour
         {
             Player player = other.GetComponent<Player>();
             player.Damage();
-                
+            AudioSource.PlayClipAtPoint(_clip, Camera.main.transform.position, 0.5f);
+
         }
 
     }

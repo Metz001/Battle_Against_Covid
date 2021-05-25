@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-   
+
     [SerializeField]
     public float speed; //vel
     private float initialSpeed; //velocidad inical
@@ -28,9 +28,9 @@ public class Player : MonoBehaviour
     public int vidas; //número de vidas
     public int shield; //resistencai escudo
     [SerializeField]
-   public GameObject shieldGameObject;
+    public GameObject shieldGameObject;
 
-    private UI_Manager uiManager;
+    public UI_Manager uiManager;
     private GameManager gameManager;
 
     void Start()
