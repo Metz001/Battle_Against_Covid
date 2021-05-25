@@ -127,8 +127,8 @@ MonoBehaviour:
   laser2: {fileID: 5524664688909948709, guid: d3ca370efd907fa4fb55f358e093a9a7, type: 3}
   speed: 0.05
   _clip: {fileID: 8300000, guid: a885c043fab7e46438bba03ba9dab6bc, type: 3}
-  scoreReward: 500
-  vidas: 150
+  scoreReward: 1000
+  vidas: 60
   id: 1
 --- !u!50 &1975725890
 Rigidbody2D:

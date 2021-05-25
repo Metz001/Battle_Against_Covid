@@ -7,6 +7,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public bool gameOver = true;
+    [HideInInspector]
+    public bool destroyBoos = false;
     public GameObject player;
 
     [HideInInspector]
@@ -26,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        
         if (gameOver == true)
         {
 

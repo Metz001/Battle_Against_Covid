@@ -10,6 +10,8 @@ public class UI_Manager : MonoBehaviour
     Sprite[] spriteLives;
     public Image livesImage, titleScreen;
     public Text scoreText;
+    public Text winText;
+    public Text loseText;
     public int actualScore;
 
     //lead borad
@@ -47,8 +49,31 @@ public class UI_Manager : MonoBehaviour
     }
 
     //método para guardar y reordenar la tabla de posiciones
+    public void GameOver(bool gameBoos)
+    {
+        if (gameBoos)
+        {
+            winText.gameObject.SetActive(true);
+            StartCoroutine(Wait());
+            
+        }
+        else 
+        {
+            loseText.gameObject.SetActive(true);
+            StartCoroutine(Wait());
+          
+        }
+          
 
-    
+    }
+    public IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(2f);
+        winText.gameObject.SetActive(false);
+        loseText.gameObject.SetActive(false);
+
+    }
+
     private void BoardOrder()
     {
         /*  if (actualScore > leadScores[0])

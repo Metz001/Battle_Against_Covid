@@ -110,6 +110,7 @@ public class Player : MonoBehaviour
             {
                 Instantiate(explosion, transform.position, Quaternion.identity);
                 gameManager.gameOver = true;
+                gameManager._UiManager.GameOver(false);
                 Destroy(gameObject);               
             }
         }

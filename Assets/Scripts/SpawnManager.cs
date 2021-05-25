@@ -31,7 +31,7 @@ public class SpawnManager : MonoBehaviour
         {
             yield return new WaitForSeconds(spawnTime_Enemy);
             Instantiate(enemyPrefab, new Vector3(Random.Range(-8f, 8f), 6f, 0), Quaternion.identity);
-            if (gameManager._UiManager.actualScore > 1500 && boss == false)
+            if (gameManager._UiManager.actualScore > 800 && boss == false)
             {
                 Instantiate(bossPrefab, new Vector3(0, 6f, 0), Quaternion.identity);
                 boss = true;

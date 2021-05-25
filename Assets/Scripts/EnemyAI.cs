@@ -65,9 +65,20 @@ public class EnemyAI : MonoBehaviour
         {
             Destroy(other.gameObject);
             //uiManager.UpdateScore(scoreReward);
-            gameManager._UiManager.UpdateScore(scoreReward);
+           
             AudioSource.PlayClipAtPoint(_clip, Camera.main.transform.position, 0.5f);
             vidas--;
+            if(vidas <=0)
+            {
+                gameManager._UiManager.UpdateScore(scoreReward);
+                if (id == 1)
+                {
+                    gameManager.destroyBoos = true;
+                    gameManager._UiManager.GameOver(true);
+                }
+                
+            }
+            
             //enemyDeath();
         }
         if (other.tag == "Player")
@@ -78,28 +89,48 @@ public class EnemyAI : MonoBehaviour
                 player.Damage();            //player recibe daño
             }
             //uiManager.UpdateScore(scoreReward/2);
-            gameManager._UiManager.UpdateScore(scoreReward/2);
+            
             AudioSource.PlayClipAtPoint(_clip, Camera.main.transform.position, 0.5f);
             vidas--;
+            if (vidas <= 0)
+            {
+                gameManager._UiManager.UpdateScore(scoreReward/2);
+                if (id == 1)
+                {
+                    gameManager.destroyBoos = true;
+                    gameManager._UiManager.GameOver(true);
+                }
+
+            }
             //enemyDeath();
         }
     }
     public IEnumerator Shoot()
     {
-           yield return new WaitForSeconds(Random.Range(1f,3f));
-        if(id == 1)
+        while (true)
         {
-            Instantiate(laser2, transform.position + new Vector3(0.95f, -1.6f, 0f), Quaternion.identity);
-            Instantiate(laser2, transform.position + new Vector3(-0.95f, -1.6f, 0f), Quaternion.identity);
-        }
+            yield return new WaitForSeconds(Random.Range(1f, 6f));
+            if (id == 1)
+            {
+                Instantiate(laser2, transform.position + new Vector3(0.95f, -1.6f, 0f), Quaternion.identity);
+                Instantiate(laser2, transform.position + new Vector3(-0.95f, -1.6f, 0f), Quaternion.identity);
+            }
 
-        Instantiate(laser2, transform.position + new Vector3(0f, -1.6f, 0f), Quaternion.identity);
+            Instantiate(laser2, transform.position + new Vector3(0f, -1.6f, 0f), Quaternion.identity);
+
+        }
+          
         
 
     }
     void enemyDeath()
     {
-
+       /* if (id == 1)
+        {
+            gameManager.destroyBoos = true;
+            gameManager._UiManager.GameOver(true);
+        }*/
+           
         Instantiate(enemyExplosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
