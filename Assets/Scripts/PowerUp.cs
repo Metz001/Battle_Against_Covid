@@ -16,7 +16,7 @@ public class PowerUp : MonoBehaviour
     [SerializeField]
     private AudioClip _clip;
 
-
+    
 
     private void Update()
     {
@@ -52,7 +52,19 @@ public class PowerUp : MonoBehaviour
                     player.shieldGameObject.SetActive(true);
                     Destroy(gameObject);
                 }
-                
+                else if (powerUpId == 3)
+                {
+                    
+                   
+                    if (player.vidas <3)
+                    {
+                        player.vidas++;
+                        player.uiManager.UpdateLives(player.vidas);
+                    }
+                                        
+                    Destroy(gameObject);
+                }
+
             }
             else
             {

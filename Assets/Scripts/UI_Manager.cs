@@ -13,7 +13,7 @@ public class UI_Manager : MonoBehaviour
     public Text winText;
     public Text loseText;
     public int actualScore;
-
+    public GameObject playText;
     //lead borad
     private int leadScores;
     public Text textScores;
@@ -37,6 +37,7 @@ public class UI_Manager : MonoBehaviour
         scoreText.gameObject.SetActive(false);
         livesImage.gameObject.SetActive(false);
         titleScreen.gameObject.SetActive(true);
+        playText.SetActive(true);
     }
     public void HideTitleScreen()
     {

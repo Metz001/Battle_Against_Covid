@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
                 _UiManager.HideTitleScreen();             
                 _UiManager.actualScore = 0;
                 _UiManager.scoreText.text = "Score: " + _UiManager.actualScore;
+                _UiManager.playText.SetActive(false);
             }
         }
       
