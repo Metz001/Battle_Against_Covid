@@ -58,6 +58,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameManager.gameOver)
+            Destroy(gameObject);
         Movement(); //llamamos el método movimiento
         //Disparo
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButton(0))

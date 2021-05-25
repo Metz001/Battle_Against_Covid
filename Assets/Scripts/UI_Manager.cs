@@ -54,6 +54,7 @@ public class UI_Manager : MonoBehaviour
         if (gameBoos)
         {
             winText.gameObject.SetActive(true);
+          
             StartCoroutine(Wait());
             
         }
